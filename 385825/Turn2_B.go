@@ -5,8 +5,8 @@
 //	"time"
 //)
 //
-//// Shared channel between service1 and service2
-//var sharedChannel = make(chan string)
+//// Shared buffered channel between service1 and service2
+//var sharedChannel = make(chan string, 10) // Buffer size of 10
 //
 //func main() {
 //	// Start service2 (consumer) in a separate goroutine
@@ -20,11 +20,23 @@
 //func service1() {
 //	for i := 0; i < 5; i++ {
 //		data := fmt.Sprintf("Data from service1: %d", i)
+//		if err := sendData(data); err != nil {
+//			fmt.Println("Service1: Error sending data:", err)
+//			continue
+//		}
 //		fmt.Println("Service1: Sending data:", data)
-//		sharedChannel <- data
 //		time.Sleep(time.Second) // Simulate some work
 //	}
 //	close(sharedChannel) // Signal the end of data transmission
+//}
+//
+//func sendData(data string) error {
+//	select {
+//	case sharedChannel <- data:
+//		return nil // Data sent successfully
+//	default:
+//		return fmt.Errorf("channel is full")
+//	}
 //}
 //
 //// Service 2: The consumer
