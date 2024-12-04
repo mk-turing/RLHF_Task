@@ -12,7 +12,7 @@ import (
 
 func main() {
 	fs := token.NewFileSet()
-	f, err := parser.ParseFile(fs, "main.go", nil, parser.ParseComments)
+	f, err := parser.ParseFile(fs, "Turn1A.go", nil, parser.ParseComments)
 	if err != nil {
 		panic(err)
 	}
@@ -40,7 +40,7 @@ func generateDecorators(fs *token.FileSet, f *ast.File) {
 	}
 
 	// Write the modified file back
-	if err := ioutil.WriteFile("main.go", buf.Bytes(), 0644); err != nil {
+	if err := ioutil.WriteFile("Turn1A.go", buf.Bytes(), 0644); err != nil {
 		panic(err)
 	}
 }
