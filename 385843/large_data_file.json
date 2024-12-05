@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "user": {
+        "id": 1,
+        "name": "Alice",
+        "age": 30,
+        "address": {
+          "street": "123 Maple Street",
+          "city": "Springfield",
+          "state": "IL"
+        },
+        "purchases": [
+          {
+            "item": "Laptop",
+            "price": 1200
+          },
+          {
+            "item": "Phone",
+            "price": 800
+          }
+        ]
+      }
+    },
+    {
+      "user": {
+        "id": 2,
+        "name": "Bob",
+        "age": 25,
+        "address": {
+          "street": "456 Oak Avenue",
+          "city": "Rivertown",
+          "state": "CA"
+        },
+        "purchases": [
+          {
+            "item": "Tablet",
+            "price": 600
+          },
+          {
+            "item": "Headphones",
+            "price": 200
+          }
+        ]
+      }
+    }
+  ]
+}
