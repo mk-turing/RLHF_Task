@@ -1,0 +1,15 @@
+// user.proto
+syntax = "proto3";
+
+package user;
+
+option go_package = "pb/userpb";
+
+service UserService {
+  rpc CreateUser(User) returns (User);
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+}
