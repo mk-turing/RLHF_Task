@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: WebSocket API
+  version: 1.0.0
+  description: Documentation for a simple WebSocket API
+servers:
+  - url: ws://localhost:8080
+paths:
+  /chat:
+    get:
+      summary: Connect to the chat
+      description: Establish a WebSocket connection to the chat server.
+      operationId: connectChat
+      responses:
+        '101':
+          description: Switching Protocols
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Welcome to the chat!"
+    post:
+      summary: Send a message
+      description: Send a message to the chat server.
+      operationId: sendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Message sent
+        '400':
+          description: Bad request
+components:
+  schemas:
+    ChatMessage:
+      type: object
+      properties:
+        message:
+          type: string

@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: Enhanced WebSocket API
+  version: 1.0.0
+  description: Detailed documentation for an enhanced WebSocket API
+servers:
+  - url: ws://localhost:8080
+paths:
+  /chat:
+    get:
+      summary: Establish a WebSocket connection
+      description: Connect to the chat WebSocket service. The server sends a welcome message.
+      operationId: connectToChat
+      responses:
+        '101':
+          description: Switching Protocols
+      externalDocs:
+        description: Detailed WebSocket protocol description
+        url: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+components:
+  websockets:
+    chat:
+      summary: Chat WebSocket
+      description: A WebSocket service for sending and receiving chat messages.
+      url: /chat
+      operations:
+        connect:
+          description: Connect to the chat service.
+        sendMessage:
+          description: Send a message to the chat room.
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ChatMessage'
+          responses:
+            '200':
+              description: Message sent successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ChatMessage'
+            '400':
+              description: Invalid message format
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorResponse'
+            '500':
+              description: Internal server error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorResponse'
+        disconnect:
+          description: Disconnect from the chat service.
+schemas:
+  ChatMessage:
+    type: object
+    properties:
+      message:
+        type: string
+        maxLength: 255
+        description: The message to send to the chat room.
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string

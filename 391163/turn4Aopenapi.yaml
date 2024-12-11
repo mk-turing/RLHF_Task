@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: WebSocket Chat API
+  version: 1.0.0
+  description: A simple WebSocket Chat API that allows real-time communication between clients and the server, supporting message broadcasting to all connected clients.
+servers:
+  - url: ws://localhost:8080
+security:
+  - bearerAuth: []
+
+paths:
+  /chat:
+    get:
+      summary: Connect to the chat
+      description: Establishes a WebSocket connection to the chat server. Clients must provide a Bearer token in the query string to authenticate. Messages sent by any client are broadcasted to all connected clients.
+      parameters:
+        - in: query
+          name: token
+          required: true
+          description: The Bearer token for authentication.
+          schema:
+            type: string
+      operationId: connectChat
+      responses:
+        '101':
+          description: Successfully upgraded the connection to WebSocket.
+        '401':
+          description: Unauthorized. The token is missing or invalid.
+        '400':
+          description: Bad Request. The request could not be understood by the server.
+
+    post:
+      summary: Send a message
+      description: Sends a chat message to the server. The server will broadcast the message to all connected clients.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  description: The name of the user sending the message.
+                  example: "User1"
+                content:
+                  type: string
+                  description: The message that the user wants to send to the chat.
+                  example: "Hello, Everyone!"
+      responses:
+        '200':
+          description: Successfully broadcasted the message.
+        '401':
+          description: Unauthorized. The token is missing or invalid.
+        '400':
+          description: Bad Request. The message could not be processed.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
