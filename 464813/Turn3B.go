@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
@@ -26,33 +24,10 @@ type User struct {
 }
 
 func fetchUsers() ([]User, error) {
-	// Rate limit the API requests
-	rateLimiter <- struct{}{}
-	defer func() { <-rateLimiter }()
-
-	// Make a GET request to fetch users from an API
-	res, err := http.Get("https://api.example.com/users")
-	if err != nil {
-		return nil, err
-	}
-	defer res.Body.Close()
-
-	// Read the response body
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	if res.StatusCode != http.StatusOK {
-		// Handle non-OK status code
-		return nil, fmt.Errorf("received status %d", res.StatusCode)
-	}
-
-	// Decode the JSON response into a slice of User structs
-	var users []User
-	err = json.Unmarshal(body, &users)
-	if err != nil {
-		return nil, err
+	users := []User{
+		{ID: 1, Name: "Alice", Email: "alice@example.com"},
+		{ID: 2, Name: "Bob", Email: "bob@example.com"},
+		{ID: 3, Name: "Charlie", Email: "charlie@example.com"},
 	}
 
 	return users, nil
