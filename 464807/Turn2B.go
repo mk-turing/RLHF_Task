@@ -50,7 +50,7 @@ func loadConfiguration(configPath string) error {
 
 func main() {
 	// Configuration file path (you can change this to a relative path or a command-line flag)
-	configPath := "Turn2B.yaml"
+	configPath := "Turn2B.go.yaml"
 
 	// Load the configuration
 	err := loadConfiguration(configPath)
