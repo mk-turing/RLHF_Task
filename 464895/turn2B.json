@@ -1,0 +1,1 @@
+{"key1":{"data":"value1 with TTL 1 minute","expiry":"2024-12-24T08:15:35.824007+05:30"},"key2":{"data":"value2 with TTL 2 hours","expiry":"2024-12-24T10:14:35.82454+05:30"},"key3":{"data":"value3 with TTL 10 seconds","expiry":"2024-12-24T08:14:45.824852+05:30"}}
