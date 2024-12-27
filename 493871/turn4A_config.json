@@ -1,0 +1,9 @@
+{
+  "param_rules": {
+    "param": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_",
+    "postParam": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_",
+    "special_param": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_!@#$%^&*()"
+  },
+  "rate_limit_requests": 5,
+  "rate_limit_window": 5
+}
