@@ -7,6 +7,7 @@ toolchain go1.23.4
 require github.com/coreos/etcd v3.3.27+incompatible
 
 require (
+	github.com/asdine/storm v2.1.2+incompatible // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -33,6 +34,7 @@ require (
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
+	go.etcd.io/bbolt v1.3.11 // indirect
 	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
