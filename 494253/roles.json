@@ -1,0 +1,22 @@
+[
+  {
+    "name": "admin",
+    "permissions": [
+      "read",
+      "write",
+      "manage"
+    ]
+  },
+  {
+    "name": "user",
+    "permissions": [
+      "read"
+    ]
+  },
+  {
+    "name": "guest",
+    "permissions": [
+      "none"
+    ]
+  }
+]
